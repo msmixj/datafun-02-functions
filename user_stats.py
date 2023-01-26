@@ -78,3 +78,32 @@ scores = [
 # y is dependent on x (e.g. temperature vs hour of day)
 x_times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 y_temps = [2, 5, 8, 20, 21, 23, 24, 27, 30, 31, 31,32]
+
+#Statistic calculations for agility scores
+mean = statistics.mean(scores)
+median = statistics.median(scores)
+mode = statistics.mode(scores)
+variance = statistics.variance(scores)
+stddev = statistics.stdev(scores)
+
+#Use linear regression to calculate the slope and intercept of the best fit line.
+slope,intercept = statistics.linear_regression(x_times,y_temps)
+
+#Estimate the future temperature at the next hour.
+#Choose a y-value off in future (y future)
+y_future=13
+x_future = round(slope * y_future + intercept)
+
+print("-------------------------------------------------")
+#This is where I will print the statistics functions.
+print()
+print(f"    mean={mean:.2f}")
+print(f"    median={median:.2f}")
+print(f"    mode={mode:.2f}")
+print(f"    variance={variance:.2f}")
+print(f"    stddev={variance:.2f}")
+print(f"    slope={slope:.2f}")
+print(f"    intercept={intercept:.2f}")
+print()
+print(f"    At y_future={y_future:d}")
+print(f"    we predict the value of x will be {x_future:d}.")
